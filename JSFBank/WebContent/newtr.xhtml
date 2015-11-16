@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+  <title><ui:insert name="title">New Transaction</ui:insert></title>
+</head>
+
+<h:body>
+        <h:form id="useForm">
+                <table class="form">
+                    
+                    <tr>
+                        <td colspan="3">
+                            <h:outputText value="Balance: #{bankController.user.account.balance}"/><br/>
+                        </td>                             
+                    </tr>
+                    <tr>
+                        <td>Enter the desired amount: </td>
+                        <td><h:inputText id="total" value="#{transaction.total}" 
+                                     required="true">
+                                <f:convertNumber integerOnly="true"/>                                
+                                <f:validateLongRange minimum="50" maximum="#{bankController.user.account.balance}"/>
+                                
+                            </h:inputText> Ft</td>                         
+                        <td class="error"><h:message for="total"/></td>   
+                    </tr>
+                    <tr>
+                        <td>Enter the bank account: </td>
+                        <td><h:inputText id="accountnum" value="#{transaction.to}" 
+                                     required="true" size="24">
+                                <f:validateLength maximum="24"/>
+                                
+                            </h:inputText></td>                           
+                        <td class="error"><h:message for="accountnum"/></td>   
+                    </tr>      
+                    <tr>
+                        <td>
+                            <h:commandButton action="#{bankController.newTransaction(transaction)}" value="Submit"/>                            
+                        </td>                        
+                    </tr>  
+                </table>                
+                <h:outputText value="#{bankController.message}"/>
+            </h:form>
+</h:body>
+     
+
+</html>

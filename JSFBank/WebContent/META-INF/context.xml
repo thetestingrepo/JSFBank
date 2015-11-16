@@ -1,0 +1,10 @@
+<Context>
+
+  <Resource name="jdbc/Web_bank" 
+  			auth="Container" type="javax.sql.DataSource"
+               maxActive="20" maxIdle="5" maxWait="10000"
+               username="postgres" password="RFV7lmQj" 
+               driverClassName="org.postgresql.Driver"
+               url="jdbc:postgresql://localhost:5432/webbank"/>
+
+</Context>
